@@ -2,59 +2,42 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0,
-               maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Important Investigation</title>
+<title>Important Message</title>
 
 <style>
 * {
     box-sizing: border-box;
-    -webkit-tap-highlight-color: transparent;
 }
 
-html,
 body {
-    width: 100%;
-    height: 100%;
     margin: 0;
-    padding: 0;
-}
-
-body {
-    min-height: 100dvh;
+    min-height: 100vh;
     background: #ead9ca;
     font-family: Arial, Helvetica, sans-serif;
-    color: #27211e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
+    color: #27211e;
 }
 
 .phone {
     width: 100%;
-    height: 100dvh;
-    min-height: 100dvh;
+    max-width: 430px;
+    height: 100vh;
+    max-height: 850px;
+    background: #f7eee7;
     position: relative;
     overflow: hidden;
-    background: #f7eee7;
+    box-shadow: 0 0 40px rgba(0,0,0,.18);
 }
-
-/* =========================
-   SCREENS
-========================= */
 
 .screen {
     position: absolute;
     inset: 0;
-
-    width: 100%;
-    height: 100%;
-    min-height: 100dvh;
-
-    padding:
-        max(25px, env(safe-area-inset-top))
-        24px
-        max(25px, env(safe-area-inset-bottom));
+    padding: 35px 25px;
 
     display: none;
 
@@ -64,17 +47,17 @@ body {
 
     text-align: center;
 
-    animation: fadeIn .4s ease;
+    animation: fade .35s ease;
 }
 
 .screen.active {
     display: flex;
 }
 
-@keyframes fadeIn {
+@keyframes fade {
     from {
         opacity: 0;
-        transform: translateY(12px);
+        transform: translateY(10px);
     }
 
     to {
@@ -83,129 +66,120 @@ body {
     }
 }
 
-/* =========================
-   TEXT
-========================= */
-
 h1 {
+    font-size: 34px;
     margin: 0 0 18px;
-    font-size: clamp(28px, 8vw, 40px);
-    line-height: 1.05;
 }
 
 h2 {
+    font-size: 25px;
     margin: 0 0 18px;
-    font-size: clamp(22px, 6vw, 30px);
-    line-height: 1.1;
 }
 
 p {
-    margin: 8px 0;
-    max-width: 350px;
-    font-size: clamp(16px, 4.5vw, 19px);
+    font-size: 18px;
     line-height: 1.5;
+    margin: 8px 0;
 }
-
-/* =========================
-   BUTTON
-========================= */
 
 button {
     border: none;
-    outline: none;
-
-    margin-top: 25px;
-
-    padding: 15px 25px;
-
     background: #27211e;
     color: white;
 
+    padding: 15px 25px;
+
     border-radius: 14px;
 
-    font-size: clamp(15px, 4vw, 17px);
+    font-size: 16px;
     font-weight: bold;
 
     cursor: pointer;
 
-    transition:
-        transform .15s ease,
-        opacity .15s ease;
+    margin-top: 25px;
+
+    transition: .2s;
 }
 
 button:active {
-    transform: scale(.94);
+    transform: scale(.95);
 }
 
 button:hover {
     transform: translateY(-2px);
 }
 
+
+/* =========================
+   MOVING BUTTON
+========================= */
+
+#concerned {
+    position: relative;
+}
+
+
+/* =========================
+   LOADING BAR
+========================= */
+
+.loading {
+    width: 180px;
+    height: 8px;
+
+    background: #dbc8ba;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    margin-top: 25px;
+}
+
+.loading div {
+    height: 100%;
+    width: 0%;
+
+    background: #27211e;
+
+    animation: load 2.2s forwards;
+}
+
+@keyframes load {
+    to {
+        width: 100%;
+    }
+}
+
+
 /* =========================
    WARNING
 ========================= */
 
 .warning {
-    width: 75px;
-    height: 75px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    border: 5px solid #27211e;
-    border-radius: 50%;
-
-    font-size: 48px;
-    font-weight: bold;
-
-    margin-bottom: 20px;
-}
-
-/* =========================
-   HEIGHT SELECT
-========================= */
-
-select {
-    width: min(330px, 90vw);
-
-    padding: 15px;
-
-    margin-top: 15px;
-
-    border: 2px solid #27211e;
-    border-radius: 12px;
-
-    background: white;
-
-    font-size: 16px;
-
-    outline: none;
-}
-
-/* =========================
-   SWORD CHARACTER
-========================= */
-
-.character {
-    position: relative;
-
-    width: 170px;
-    height: 170px;
-
+    font-size: 55px;
     margin-bottom: 15px;
 }
 
-/* body */
+
+/* =========================
+   CAT
+========================= */
+
+.character {
+    width: 150px;
+    height: 150px;
+
+    margin-bottom: 20px;
+
+    position: relative;
+}
 
 .cat-body {
     position: absolute;
 
-    width: 95px;
-    height: 78px;
-
-    left: 38px;
-    top: 72px;
+    width: 90px;
+    height: 75px;
 
     background: #27211e;
 
@@ -214,25 +188,24 @@ select {
         45%
         35%
         35%;
-}
 
-/* head */
+    left: 30px;
+    top: 55px;
+}
 
 .cat-head {
     position: absolute;
 
-    width: 85px;
-    height: 75px;
-
-    left: 43px;
-    top: 25px;
+    width: 80px;
+    height: 70px;
 
     background: #27211e;
 
     border-radius: 50%;
-}
 
-/* ears */
+    left: 35px;
+    top: 15px;
+}
 
 .ear-left,
 .ear-right {
@@ -241,77 +214,77 @@ select {
     width: 0;
     height: 0;
 
-    border-left: 18px solid transparent;
-    border-right: 18px solid transparent;
-    border-bottom: 38px solid #27211e;
+    border-left: 17px solid transparent;
+    border-right: 17px solid transparent;
+    border-bottom: 35px solid #27211e;
 
-    top: -23px;
+    top: -20px;
 }
 
 .ear-left {
-    left: 3px;
+    left: 4px;
     transform: rotate(-18deg);
 }
 
 .ear-right {
-    right: 3px;
+    right: 4px;
     transform: rotate(18deg);
 }
-
-/* eyes */
 
 .eye {
     position: absolute;
 
-    width: 10px;
-    height: 10px;
-
-    top: 34px;
+    width: 9px;
+    height: 9px;
 
     background: white;
+
     border-radius: 50%;
+
+    top: 32px;
 }
 
 .eye.left {
-    left: 21px;
+    left: 20px;
 }
 
 .eye.right {
-    right: 21px;
+    right: 20px;
 }
-
-/* nose */
 
 .nose {
     position: absolute;
 
-    width: 10px;
+    width: 9px;
     height: 7px;
-
-    left: 37px;
-    top: 48px;
 
     background: #d69b9b;
 
     border-radius: 50%;
+
+    left: 35px;
+    top: 45px;
 }
 
-/* sword */
+
+/* =========================
+   SWORD
+========================= */
 
 .sword {
     position: absolute;
 
-    width: 125px;
-    height: 9px;
-
-    right: -35px;
-    top: 58px;
+    width: 115px;
+    height: 8px;
 
     background: #bfc4ca;
 
-    border-radius: 5px;
-
     transform: rotate(-38deg);
+
+    right: -30px;
+    top: 45px;
+
+    border-radius: 5px;
 }
 
 .sword::before {
@@ -319,15 +292,15 @@ select {
 
     position: absolute;
 
-    width: 28px;
-    height: 11px;
-
-    left: -20px;
-    top: -1px;
+    width: 25px;
+    height: 10px;
 
     background: #8c5b3d;
 
-    border-radius: 5px;
+    left: -18px;
+    top: -1px;
+
+    border-radius: 4px;
 }
 
 .sword::after {
@@ -335,41 +308,98 @@ select {
 
     position: absolute;
 
-    right: -17px;
+    right: -15px;
     top: -7px;
 
     width: 0;
     height: 0;
 
-    border-top: 12px solid transparent;
-    border-bottom: 12px solid transparent;
-    border-left: 22px solid #bfc4ca;
+    border-top: 11px solid transparent;
+    border-bottom: 11px solid transparent;
+    border-left: 20px solid #bfc4ca;
 }
 
+
 /* =========================
-   BAUNI REVEAL
+   HEIGHT
 ========================= */
 
-.bauni {
-    font-size: clamp(65px, 23vw, 125px);
+select {
+    width: 100%;
+    max-width: 320px;
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    border: 2px solid #27211e;
+
+    background: white;
+
+    font-size: 16px;
+
+    margin-top: 15px;
+}
+
+
+/* =========================
+   POOKIE SIZED
+========================= */
+
+.pookie {
+    font-size: clamp(55px, 17vw, 90px);
 
     font-weight: 1000;
 
-    letter-spacing: -6px;
+    letter-spacing: -4px;
 
-    line-height: .8;
+    line-height: .9;
 
     animation:
-        bauniPop .7s
-        cubic-bezier(.2, 1.5, .4, 1);
+        pop .5s
+        cubic-bezier(.2,1.5,.4,1);
 }
 
-@keyframes bauniPop {
+@keyframes pop {
+
+    from {
+        transform:
+            scale(.2)
+            rotate(-10deg);
+
+        opacity: 0;
+    }
+
+    to {
+        transform:
+            scale(1)
+            rotate(-3deg);
+
+        opacity: 1;
+    }
+}
+
+
+/* =========================
+   BATMAN
+========================= */
+
+.bat-symbol {
+    font-size: 95px;
+
+    font-weight: 1000;
+
+    margin-bottom: 20px;
+
+    animation:
+        bat .7s ease;
+}
+
+@keyframes bat {
 
     0% {
-        opacity: 0;
         transform:
-            scale(.1)
+            scale(0)
             rotate(-20deg);
     }
 
@@ -380,63 +410,453 @@ select {
     }
 
     100% {
-        opacity: 1;
         transform:
-            scale(1)
-            rotate(-2deg);
-    }
-}
-
-/* =========================
-   BATMAN
-========================= */
-
-.bat-symbol {
-    font-size: clamp(70px, 20vw, 100px);
-
-    font-weight: 1000;
-
-    margin-bottom: 15px;
-
-    animation:
-        batPop .7s
-        cubic-bezier(.2, 1.5, .4, 1);
-}
-
-@keyframes batPop {
-
-    0% {
-        transform:
-            scale(0)
-            rotate(-25deg);
-    }
-
-    60% {
-        transform:
-            scale(1.2)
-            rotate(5deg);
-    }
-
-    100% {
-        transform:
-            scale(1)
-            rotate(0);
+            scale(1);
     }
 }
 
 .batman {
-    font-size: clamp(48px, 15vw, 85px);
+    font-size: clamp(50px, 15vw, 82px);
 
     font-weight: 1000;
 
-    line-height: .85;
+    line-height: .9;
 
-    letter-spacing: -4px;
-
-    animation: batText .6s ease;
+    letter-spacing: -3px;
 }
 
-@keyframes batText {
 
-    from {
-        opacity
+/* =========================
+   REPLAY
+========================= */
+
+.replay {
+    background: transparent;
+
+    color: #27211e;
+
+    border: 2px solid #27211e;
+}
+</style>
+</head>
+
+
+<body>
+
+<div class="phone">
+
+
+<!-- =========================
+     SCREEN 0
+========================= -->
+
+<section class="screen active" id="s0">
+
+    <h1>
+        I need to tell you something…
+    </h1>
+
+    <p>
+        And before you ask...
+    </p>
+
+    <p>
+        Yes, this is unnecessarily dramatic.
+    </p>
+
+    <button onclick="next()">
+        Continue
+    </button>
+
+</section>
+
+
+<!-- =========================
+     SCREEN 1
+========================= -->
+
+<section class="screen" id="s1">
+
+    <div class="warning">
+        !
+    </div>
+
+    <h2>
+        This is serious.
+    </h2>
+
+    <p>
+        Like...
+    </p>
+
+    <p>
+        <b>extremely serious.</b>
+    </p>
+
+    <button onclick="next()">
+        Continue
+    </button>
+
+</section>
+
+
+<!-- =========================
+     SCREEN 2
+========================= -->
+
+<section class="screen" id="s2">
+
+    <h2>
+        I've been thinking about this
+        for a while.
+    </h2>
+
+    <p>
+        And I finally decided to say it.
+    </p>
+
+    <button onclick="next()">
+        Okay...
+    </button>
+
+</section>
+
+
+<!-- =========================
+     SCREEN 3
+========================= -->
+
+<section class="screen" id="s3">
+
+    <h2>
+        But I didn't know how to say it.
+    </h2>
+
+    <p>
+        So naturally...
+    </p>
+
+    <p>
+        I made a whole website.
+    </p>
+
+    <button
+        id="concerned"
+        onclick="next()">
+
+        I'm already concerned
+
+    </button>
+
+</section>
+
+
+<!-- =========================
+     SCREEN 4
+========================= -->
+
+<section class="screen" id="s4">
+
+    <h2>
+        Before I continue...
+    </h2>
+
+    <p>
+        I need to address one very
+        serious issue.
+    </p>
+
+    <button onclick="next()">
+        What issue?
+    </button>
+
+</section>
+
+
+<!-- =========================
+     SCREEN 5
+========================= -->
+
+<section class="screen" id="s5">
+
+    <h2>
+        Height Verification
+    </h2>
+
+    <p>
+        Please select your height.
+    </p>
+
+    <p>
+        Be honest.
+    </p>
+
+    <select id="height">
+
+        <option value="">
+            Select your height...
+        </option>
+
+        <option value="under">
+            Under 5'0"
+        </option>
+
+        <option value="small">
+            5'0" – 5'2"
+        </option>
+
+        <option value="medium">
+            5'2" – 5'4"
+        </option>
+
+        <option value="near">
+            5'4" – 5'5"
+        </option>
+
+        <option value="tall">
+            5'5"+
+        </option>
+
+        <option value="refuse">
+            I refuse to disclose 😤
+        </option>
+
+    </select>
+
+    <button onclick="checkHeight()">
+        Submit
+    </button>
+
+</section>
+
+
+<!-- =========================
+     SCREEN 6
+========================= -->
+
+<section class="screen" id="s6">
+
+    <div class="character">
+
+        <div class="cat-head">
+
+            <div class="ear-left"></div>
+            <div class="ear-right"></div>
+
+            <div class="eye left"></div>
+            <div class="eye right"></div>
+
+            <div class="nose"></div>
+
+        </div>
+
+        <div class="cat-body"></div>
+
+        <div class="sword"></div>
+
+    </div>
+
+    <h2>
+        Evidence received.
+    </h2>
+
+    <p>
+        The investigation has reached
+        a conclusion.
+    </p>
+
+    <button onclick="next()">
+        Show me
+    </button>
+
+</section>
+
+
+<!-- =========================
+     SCREEN 7
+========================= -->
+
+<section class="screen" id="s7">
+
+    <div class="pookie">
+        POOKIE-SIZED.
+    </div>
+
+    <p>
+        Official classification.
+    </p>
+
+    <button onclick="next()">
+        Excuse me? 😭
+    </button>
+
+</section>
+
+
+<!-- =========================
+     SCREEN 8
+========================= -->
+
+<section class="screen" id="s8">
+
+    <div class="bat-symbol">
+        ▲
+    </div>
+
+    <p>
+        THE FACT IS...
+    </p>
+
+    <div class="batman">
+        I'M<br>
+        BATMAN.
+    </div>
+
+    <button onclick="next()">
+        ...
+    </button>
+
+</section>
+
+
+<!-- =========================
+     SCREEN 9
+========================= -->
+
+<section class="screen" id="s9">
+
+    <h2>
+        Okay okay...
+    </h2>
+
+    <p>
+        You caught me.
+    </p>
+
+    <p>
+        I just wanted an excuse
+        to bother you.
+    </p>
+
+    <button
+        class="replay"
+        onclick="location.reload()">
+
+        Replay
+
+    </button>
+
+</section>
+
+
+</div>
+
+
+<script>
+
+/* =========================
+   SCREEN SYSTEM
+========================= */
+
+let current = 0;
+
+function show(id) {
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(screen => {
+
+            screen.classList.remove("active");
+
+        });
+
+    document
+        .getElementById(id)
+        .classList.add("active");
+}
+
+
+function next() {
+
+    current++;
+
+    show("s" + current);
+
+}
+
+
+/* =========================
+   HEIGHT CHECK
+========================= */
+
+function checkHeight() {
+
+    const value =
+        document.getElementById("height").value;
+
+    if (!value) {
+
+        alert(
+            "You have to select something 😭"
+        );
+
+        return;
+    }
+
+    /*
+        Any selection below 5'5"
+        gets the joke.
+
+        5'5"+ and refusal also
+        continue to the joke in
+        this original version.
+    */
+
+    current = 6;
+
+    show("s6");
+
+}
+
+
+/* =========================
+   MOVING BUTTON
+========================= */
+
+const concerned =
+    document.getElementById("concerned");
+
+let moved = false;
+
+concerned.addEventListener(
+    "mouseenter",
+    moveButton
+);
+
+concerned.addEventListener(
+    "touchstart",
+    moveButton
+);
+
+
+function moveButton(event) {
+
+    if (moved) return;
+
+    moved = true;
+
+    concerned.style.position =
+        "absolute";
+
+    concerned.style.left =
+        Math.random() * 45 + 25 + "%";
+
+    concerned.style.top =
+        Math.random() * 45 + 30 + "%";
+
+}
+
+</script>
+
+</body>
+</html>
