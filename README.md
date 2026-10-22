@@ -1,4 +1,31 @@
-<!DOCTYPE html>
+html, body {
+    width: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100dvh;
+    overflow: hidden;
+}
+
+.phone {
+    width: 100%;
+    height: 100dvh;
+    max-width: none;
+    max-height: none;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.screen {
+    width: 100%;
+    height: 100%;
+    min-height: 100dvh;
+    padding: 30px 24px;
+}
+<🙏Namaste🙏>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
